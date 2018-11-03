@@ -10,7 +10,7 @@ start_arm_z = device.get_current_position('z')
 safeZ = -200
 
 device.log('starting!', 'success', ['toast'])
-
+'''
 legacy = get_config_value('Legacy Seeding Path', 'legacy')#User inputs 0 for false and 1 for true.
 # Load inputs from Farmware page widget specified in manifest file
 pos_x = get_config_value('Legacy Seeding Path', 'start_x')#Starting X position of Pathway
@@ -105,6 +105,7 @@ def moveAbs(x, y, z):
     )
 
 device.log('success!!', 'success', ['toast'])
+'''
 
 if __name__ == '__main__':
     farmware_name = 'move_to_safe'
