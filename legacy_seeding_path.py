@@ -23,33 +23,32 @@ start_arm_y = device.get_current_position('y')
 start_arm_z = device.get_current_position('z')
 
 safeZ = -200
-''' values for opencv
-pos_x = 1013
-pos_y = 24
-pos_z = -400
-'''
 
-legacy = get_config_value('Seeding Path', 'Legacy Seeder')#User inputs 0 for false and 1 for true.
+legacy = get_config_value('Legacy Seeding Path', 'legacy')#User inputs 0 for false and 1 for true.
 # Load inputs from Farmware page widget specified in manifest file
-pos_x = get_config_value('Seeding Path', 'start_x')#Starting X position of Pathway
-pos_y = get_config_value('Seeding Path', 'start_y')#Starting Y position of Pathway
-pos_z = get_config_value('Seeding Path', 'start_z')
-plantLength = get_config_value('Seeding Path', 'Plant-to-Plant Delta X\nFor current waffer use 40mm') #Distance between one center of a plant to another X dimention
-plantWidth = get_config_value('Seeding Path', 'Plant-to-Plant Delta Y\nFor current waffer use 30mm') #Distance between one center of a plant to another Y dimention
+pos_x = get_config_value('Legacy Seeding Path', 'start_x')#Starting X position of Pathway
+pos_y = get_config_value('Legacy Seeding Path', 'start_y')#Starting Y position of Pathway
+pos_z = get_config_value('Legacy Seeding Path', 'start_z')
+plantLength = get_config_value('Legacy Seeding Path', 'plant_l') #Distance between one center of a plant to another X dimention
+plantWidth = get_config_value('Legacy Seeding Path', 'plant_w') #Distance between one center of a plant to another Y dimention
 #currently a scaler, make it a list later, the next two inputs
-plantCountLong = get_config_value('Seeding Path', '# of Plants Long') #How many plants are in a column
-plantCountWide = get_config_value('Seeding Path', '# of Plants Wide') #How many plans are in a row
+plantCountLong = get_config_value('Legacy Seeding Path', 'cellX') #How many plants are in a column
+plantCountWide = get_config_value('Legacy Seeding Path', 'cellY') #How many plans are in a row
 
+#Seed tool location
 seedToolX = 1330
-seedTrayX = 1330#measure for actual value
 seedToolY = 136
-seedTrayY = 136#measure for actual value
 seedToolZ = -325
-seedTrayZ = -50#measure for actual value
+
+#Seed ben location
+seedTrayX = 1330
+seedTrayY = 136
+seedTrayZ = -50
+
 toolExtractX = 1240
 
 # Define plant location lists
-plant_pos_x, plant_pos_y, plant_pos_z = [], [], -390 #XY dimention of plant in array using 40mm and 30 mm with a z being the planting z height sequence values
+plant_pos_x, plant_pos_y, plant_pos_z = [], [], pos_z #XY dimention of plant in array using 40mm and 30 mm with a z being the planting z height sequence values
 '''#After getting these values we should try and output it to a file to see how far off if at all the machine thinks it is, will it?
 plant_pos_x_get, plant_pos_y_get, plant_pos_z_get = [], [], [] #XY dimention of plant in array using get_current_positio'''
 '''#Computer vision location XYZ values in a list
