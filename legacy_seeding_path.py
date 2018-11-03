@@ -40,10 +40,10 @@ seedToolX = 1330
 seedToolY = 136
 seedToolZ = -325
 
-#Seed ben location
-seedTrayX = 1330
-seedTrayY = 136
-seedTrayZ = -50
+#Seed tray location
+seedTrayX = 1340
+seedTrayY = 0
+seedTrayZ = -260
 
 toolExtractX = 1240
 
