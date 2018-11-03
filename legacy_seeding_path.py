@@ -9,6 +9,8 @@ start_arm_z = device.get_current_position('z')
 
 safeZ = -200
 
+device.log('starting!', 'success', ['toast'])
+
 legacy = get_config_value('Legacy Seeding Path', 'legacy')#User inputs 0 for false and 1 for true.
 # Load inputs from Farmware page widget specified in manifest file
 pos_x = get_config_value('Legacy Seeding Path', 'start_x')#Starting X position of Pathway
@@ -42,7 +44,7 @@ def move_toSeed_plant(x, y, z):
     moveAbs(x,y,z+5)        
 
 #Define functions
-device.log('starting!', 'success', ['toast'])
+
 sense = 1#'sense' is my way of telling the program to go left or right. Sense = 1 Counts UP from ZERO
 for i in range(plantCountLong): # for loop for every plant long
     plant_pos_x.append(plantWidth*i+pos_x) # place the plant position in an array
