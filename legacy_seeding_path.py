@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 """Seeding Path Farmware"""
 #Import libraries
-from farmware_tools import device, get_config_value, app #sacFarmBot
+from farmware_tools import device #get_config_value, app #sacFarmBot
+
+device.log('starting!', 'success', ['toast'])
+'''
 
 start_arm_x = device.get_current_position('x')
 start_arm_y = device.get_current_position('y')
@@ -9,8 +12,7 @@ start_arm_z = device.get_current_position('z')
 
 safeZ = -200
 
-device.log('starting!', 'success', ['toast'])
-'''
+
 legacy = get_config_value('Legacy Seeding Path', 'legacy')#User inputs 0 for false and 1 for true.
 # Load inputs from Farmware page widget specified in manifest file
 pos_x = get_config_value('Legacy Seeding Path', 'start_x')#Starting X position of Pathway
