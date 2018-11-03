@@ -5,10 +5,10 @@
  "description": "Moves FarmBot arm to deposit seeds in a grid pattern using absolute coordinates.",
  "version": "1.0.1",
  "min_os_version_major": 6,
- "url": "https://raw.githubusercontent.com/SAC-Hydroponics/seeding-path/master/manifest.json",
- "zip": "https://github.com/SAC-Hydroponics/seeding-path/archive/master.zip",
+ "url": "https://raw.githubusercontent.com/SAC-Hydroponics/legacy-seeding-path/master/manifest.json",
+ "zip": "https://github.com/SAC-Hydroponics/legacy-seeding-path/archive/master.zip",
  "executable": "python",
- "args": ["seeding-path-master/seeding_path.py"],
+ "args": ["legacy-seeding-path-master/legacy_seeding_path.py"],
  "config": [
    {"name": "start_x", "label": "Start X(mm)", "value": 0 },
    {"name": "start_y", "label": "Start Y(mm)", "value": 0 },
