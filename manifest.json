@@ -8,15 +8,5 @@
  "url": "https://raw.githubusercontent.com/SAC-Hydroponics/legacy-seeding-path/master/manifest.json",
  "zip": "https://github.com/SAC-Hydroponics/legacy-seeding-path/archive/master.zip",
  "executable": "python",
- "args": ["legacy-seeding-path-master/legacy_seeding_path.py"],
- "config": [
-   {"name": "start_x", "label": "Start X(mm)", "value": 0 },
-   {"name": "start_y", "label": "Start Y(mm)", "value": 0 },
-   {"name": "start_z", "label": "Start Z(mm)", "value": 0 },
-   {"name": "plant_l", "label": "Length(mm)", "value": 0 },
-   {"name": "plant_w", "label": "Width(mm)", "value": 0 },
-   {"name": "cellX", "label": "Columns", "value": 0 },
-   {"name": "cellY", "label": "Rows", "value": 0 },
-   {"name": "legacy", "label": "Legacy?", "value": 0 }
- ]
+ "args": ["legacy-seeding-path-master/legacy_seeding_path.py"]
 }
