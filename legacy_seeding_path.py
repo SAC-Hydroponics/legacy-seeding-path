@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Seeding Path Farmware"""
 #Import libraries
-from farmware_tools import device, get_config_value, app, #sacFarmBot
+from farmware_tools import device, get_config_value, app #sacFarmBot
 
 '''
     Perhaps, the arm should move to a safe 'beginning' position,
