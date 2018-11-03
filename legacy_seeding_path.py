@@ -49,15 +49,8 @@ toolExtractX = 1240
 
 # Define plant location lists
 plant_pos_x, plant_pos_y, plant_pos_z = [], [], pos_z #XY dimention of plant in array using 40mm and 30 mm with a z being the planting z height sequence values
-'''#After getting these values we should try and output it to a file to see how far off if at all the machine thinks it is, will it?
-plant_pos_x_get, plant_pos_y_get, plant_pos_z_get = [], [], [] #XY dimention of plant in array using get_current_positio'''
-'''#Computer vision location XYZ values in a list
-plant_pos_x_cv, plant_pos_y_cv, plant_pos_z_cv = [], [], []'''
-'''
-moveAbs(toolExtractX, seedToolY, seedToolZ)
-moveAbs(seedToolX,seedToolY,,safeZ)
-'''
-def move_toSeed_plant(x, y, z'''include vacume pump or hopper dispensation variable here?'''):
+
+def move_toSeed_plant(x, y, z):
     moveAbs(x,y,z)
     moveAbs(x,y,z-5)
     #add the relese of the seed from the hopper and a wait function
@@ -88,23 +81,6 @@ for i in range(plantCountLong): # for loop for every plant long
             #new_plant = app.add_plant(x = x,y = y)
         sense = 1
 
-'''
-Hopeful future use of move_relative(x,y,z,speed)
-def moveRel(x, y, z, speed):
-    #device.log('Moving to ' + str(x) + ', ' + str(y) + ', ' + str(z), 'success', ['toast'])
-    device.move_relative(
-        {
-            'kind': 'coordinate',
-            'args': {'x': x, 'y': y, 'z': z}
-        },
-        100,
-        {
-            'kind': 'coordinate',
-            'args': {'x': 0, 'y': 0, 'z': 0}
-        }
-    )
-'''
-
 def grabSeeder():
     moveAbs(seedToolX, seedToolY, safeZ)
     moveAbs(seedToolX, seedToolY, seedToolZ)
@@ -125,9 +101,6 @@ def legacy_seed(x,y,z)
     moveAbs(x,y,z)
     moveAbs(x,y,z-5)
     moveAbs(x,y,z)
-
-    
-    
 
 def moveAbs(x, y, z):
     device.log('Moving to ' + str(x) + ', ' + str(y) + ', ' + str(z), 'success', ['toast'])
