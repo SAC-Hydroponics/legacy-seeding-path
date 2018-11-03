@@ -3,21 +3,6 @@
 #Import libraries
 from farmware_tools import device, get_config_value, app #sacFarmBot
 
-'''
-    Perhaps, the arm should move to a safe 'beginning' position,
-    defined by the limit switches. It would also need to TRY to
-    understand if it is in a precarious place and if movement in
-    any direction will harm plants, the machine, or whatever.
-    Perhaps, it could attempt to 'see' if it is in a precarious
-    place by using the camera. Maybe little movements in each
-    direction to start. Snap pic, attempt to find its location.
-    It will also be GREAT practice to have the machine move to
-    the safe location at the end of each program like you did
-    in this one. We could use the limit switches to accomplish
-    our safe position by going at slow speed until it's activated
-    on all sides and then we have our, starting position = safe position.
-'''
-
 start_arm_x = device.get_current_position('x')
 start_arm_y = device.get_current_position('y')
 start_arm_z = device.get_current_position('z')
@@ -57,6 +42,7 @@ def move_toSeed_plant(x, y, z):
     moveAbs(x,y,z+5)        
 
 #Define functions
+device.log('starting!', 'success', ['toast'])
 sense = 1#'sense' is my way of telling the program to go left or right. Sense = 1 Counts UP from ZERO
 for i in range(plantCountLong): # for loop for every plant long
     plant_pos_x.append(plantWidth*i+pos_x) # place the plant position in an array
