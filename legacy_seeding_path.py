@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 """Legacy Seeding Path Farmware"""
 #Import libraries
-from farmware_tools import device #get_config_value, app #sacFarmBot
+from farmware_tools import device 
+
 
 device.log('starting!', 'success', ['toast'])
 '''
@@ -83,7 +84,8 @@ def legacy_seed(x,y,z)
     moveAbs(x,y,safeZ)
     moveAbs(seedTrayX,y,safeZ)
     moveAbs(seedTrayX,seedTraY,safeZ)
-    moveAbs(seedTrayX,seedTraY,safeZ-10'''this is only a demonstration value of -10''')
+    moveAbs(seedTrayX,seedTraY,safeZ-10
+    #this is only a demonstration value of -10)
     #insert action that sucks seed up
     moveAbs(seedTrayX,seedTraY,safeZ)
     moveAbs(seedTrayX,y,safeZ)
