@@ -69,7 +69,7 @@ for i in range(plantCountLong): # for loop for every plant long
             #new_plant = app.add_plant(x = x,y = y)
         sense = 1
 '''
-
+'''
 def grabSeeder():
     moveAbs(seedToolX, seedToolY, safeZ)
     moveAbs(seedToolX, seedToolY, seedToolZ)
@@ -91,6 +91,7 @@ def legacy_seed(x,y,z)
     moveAbs(x,y,z)
     moveAbs(x,y,z-5)
     moveAbs(x,y,z)
+'''
 
 def moveAbs(x, y, z):
     device.log('Moving to ' + str(x) + ', ' + str(y) + ', ' + str(z), 'success', ['toast'])
