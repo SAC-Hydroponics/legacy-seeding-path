@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 """Legacy Seeding Path Farmware"""
 #Import libraries
-from farmware_tools import device 
-
-
-device.log('starting!', 'success', ['toast'])
-'''
+from farmware_tools import device, get_config_value 
 
 start_arm_x = device.get_current_position('x')
 start_arm_y = device.get_current_position('y')
@@ -47,7 +43,8 @@ def move_toSeed_plant(x, y, z):
     moveAbs(x,y,z+5)        
 
 #Define functions
-
+device.log('starting!', 'success', ['toast'])
+'''
 sense = 1#'sense' is my way of telling the program to go left or right. Sense = 1 Counts UP from ZERO
 for i in range(plantCountLong): # for loop for every plant long
     plant_pos_x.append(plantWidth*i+pos_x) # place the plant position in an array
