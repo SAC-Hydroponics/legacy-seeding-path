@@ -52,9 +52,9 @@ for i in range(plantCountLong): # for loop for every plant long
 	for j in range(plantCountWide):
 	    plant_pos_y.append(plantWidth*j+pos_y)
             if legacy:
-                legacy_seed(plant_pos_x[i],plant_pos_y[j],plant_pos_z)
+                legacy_seed(plant_pos_x[i],plant_pos_y[j], pos_z)
             else:
-                move_toSeed_plant(plant_pos_x[i], plant_pos_y[j], plant_pos_z)
+                move_toSeed_plant(plant_pos_x[i], plant_pos_y[j], pos_z)
             #device.wait()
             #new_plant = app.add_plant(x = x,y = y)
 	sense = 0
@@ -62,9 +62,9 @@ for i in range(plantCountLong): # for loop for every plant long
 	for j in range(plantCountWide-1,-1,-1):
 	    plant_pos_y.append(-1*plantWidth*j+pos_y)
             if legacy:
-                legacy_seed(plant_pos_x[i],plant_pos_y[j],plant_pos_z)
+                legacy_seed(plant_pos_x[i],plant_pos_y[j], pos_z)
             else:
-                move_toSeed_plant(plant_pos_x[i], plant_pos_y[j], plant_pos_z)
+                move_toSeed_plant(plant_pos_x[i], plant_pos_y[j], pos_z)
             #device.wait(1000)
             #new_plant = app.add_plant(x = x,y = y)
         sense = 1
