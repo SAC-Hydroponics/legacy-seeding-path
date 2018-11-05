@@ -44,7 +44,7 @@ def move_toSeed_plant(x, y, z):
 
 #Define functions
 device.log('success!!', 'success', ['toast'])
-'''
+
 sense = 1#'sense' is my way of telling the program to go left or right. Sense = 1 Counts UP from ZERO
 for i in range(plantCountLong): # for loop for every plant long
     plant_pos_x.append(plantWidth*i+pos_x) # place the plant position in an array
@@ -68,7 +68,7 @@ for i in range(plantCountLong): # for loop for every plant long
             #device.wait(1000)
             #new_plant = app.add_plant(x = x,y = y)
         sense = 1
-'''
+
 
 def grabSeeder():
     moveAbs(seedToolX, seedToolY, safeZ)
