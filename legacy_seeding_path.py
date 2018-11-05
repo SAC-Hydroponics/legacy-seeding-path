@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Seeding Path Farmware"""
+"""Legacy Seeding Path Farmware"""
 #Import libraries
 from farmware_tools import device #get_config_value, app #sacFarmBot
 
