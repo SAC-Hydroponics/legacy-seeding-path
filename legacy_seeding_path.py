@@ -78,7 +78,7 @@ def releaseSeeder():
     moveAbs(toolExtractX, seedToolY, seedToolZ)
     moveAbs(seedToolX, seedToolY, seedToolZ)
     moveAbs(seedToolX, seedToolY, safeZ)
-def legacy_seed(x,y,z)
+def legacy_seed(x,y,z):
     moveAbs(x,y,safeZ)
     moveAbs(seedTrayX,y,safeZ)
     moveAbs(seedTrayX,seedTraY,safeZ)
