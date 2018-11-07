@@ -40,9 +40,20 @@ moveAbs(toolExtractX, seedToolY, seedToolZ)
 moveAbs(toolExtractX, seedToolY, toolExtractZ)
             
 for i in range(len(plantLocation)):
+    #Get current location of arm
+    current_arm_x = device.get_current_position('x')
+    current_arm_y = device.get_current_position('y')
+    current_arm_z = device.get_current_position('z')
+    #Move to seed tray
+    moveAbs(current_arm_x, current_arm_x, toolExtractZ)
+    moveAbs(seedTrayX, current_arm_x, toolExtractZ)
     moveAbs(seedTrayX, seedTrayY, toolExtractZ)
     moveAbs(seedTrayX, seedTrayY, seedTrayDepth)
     moveAbs(seedTrayX, seedTrayY, toolExtractZ)
+    #Turn on vac pump, it's on pin 10
+    device.write_pin(10, 1, 0)
+    #Move to seeding location
+    moveAbs(plantLocation[i][0]+pos_x, seedTrayY, toolExtractZ)
     moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, toolExtractZ)
     moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, pos_z-10)
     moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, pos_z)
