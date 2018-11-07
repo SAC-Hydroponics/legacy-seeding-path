@@ -1,96 +1,6 @@
 #!/usr/bin/env python
-"""Legacy Seeding Path Farmware"""
-#Import libraries
-from farmware_tools import device, get_config_value 
 
-start_arm_x = device.get_current_position('x')
-start_arm_y = device.get_current_position('y')
-start_arm_z = device.get_current_position('z')
-
-safeZ = -200
-
-legacy = get_config_value('Legacy Seeding Path', 'legacy')#User inputs 0 for false and 1 for true.
-# Load inputs from Farmware page widget specified in manifest file
-pos_x = get_config_value('Legacy Seeding Path', 'start_x')#Starting X position of Pathway
-pos_y = get_config_value('Legacy Seeding Path', 'start_y')#Starting Y position of Pathway
-pos_z = get_config_value('Legacy Seeding Path', 'start_z')
-plantLength = get_config_value('Legacy Seeding Path', 'plant_l') #Distance between one center of a plant to another X dimention
-plantWidth = get_config_value('Legacy Seeding Path', 'plant_w') #Distance between one center of a plant to another Y dimention
-#currently a scaler, make it a list later, the next two inputs
-plantCountLong = get_config_value('Legacy Seeding Path', 'cellX') #How many plants are in a column
-plantCountWide = get_config_value('Legacy Seeding Path', 'cellY') #How many plans are in a row
-
-#Seed tool location
-seedToolX = 1330
-seedToolY = 136
-seedToolZ = -325
-
-#Seed tray location
-seedTrayX = 1340
-seedTrayY = 0
-seedTrayZ = -260
-
-toolExtractX = 1240
-
-# Define plant location lists
-#XY dimention of plant in array using 40mm and 30 mm with a z being the planting z height sequence values
-plant_pos_x, plant_pos_y, plant_pos_z = [], [], pos_z
-
-def move_toSeed_plant(x, y, z):
-    moveAbs(x,y,z)
-    moveAbs(x,y,z-5)
-    #add the relese of the seed from the hopper and a wait function
-    moveAbs(x,y,z+5)        
-
-#Define functions
-device.log('success!!', 'success', ['toast'])
-
-sense = 1#'sense' is my way of telling the program to go left or right. Sense = 1 Counts UP from ZERO
-for i in range(plantCountLong): # for loop for every plant long
-    plant_pos_x.append(plantWidth*i+pos_x) # place the plant position in an array
-    if sense:
-	for j in range(plantCountWide):
-	    plant_pos_y.append(plantWidth*j+pos_y)
-            if legacy:
-                legacy_seed(plant_pos_x[i],plant_pos_y[j], pos_z)
-            else:
-                move_toSeed_plant(plant_pos_x[i], plant_pos_y[j], pos_z)
-            #device.wait()
-            #new_plant = app.add_plant(x = x,y = y)
-	sense = 0
-    else:
-	for j in range(plantCountWide-1,-1,-1):
-	    plant_pos_y.append(-1*plantWidth*j+pos_y)
-            if legacy:
-                legacy_seed(plant_pos_x[i],plant_pos_y[j], pos_z)
-            else:
-                move_toSeed_plant(plant_pos_x[i], plant_pos_y[j], pos_z)
-            #device.wait(1000)
-            #new_plant = app.add_plant(x = x,y = y)
-        sense = 1
-
-
-def grabSeeder():
-    moveAbs(seedToolX, seedToolY, safeZ)
-    moveAbs(seedToolX, seedToolY, seedToolZ)
-    moveAbs(toolExtractX, seedToolY, seedToolZ)
-def releaseSeeder():
-    moveAbs(toolExtractX, seedToolY, seedToolZ)
-    moveAbs(seedToolX, seedToolY, seedToolZ)
-    moveAbs(seedToolX, seedToolY, safeZ)
-def legacy_seed(x,y,z):
-    moveAbs(x,y,safeZ)
-    moveAbs(seedTrayX,y,safeZ)
-    moveAbs(seedTrayX,seedTraY,safeZ)
-    moveAbs(seedTrayX,seedTraY,safeZ-10)
-    #this is only a demonstration value of -10
-    #insert action that sucks seed up
-    moveAbs(seedTrayX,seedTraY,safeZ)
-    moveAbs(seedTrayX,y,safeZ)
-    moveAbs(x,y,safeZ)
-    moveAbs(x,y,z)
-    moveAbs(x,y,z-5)
-    moveAbs(x,y,z)
+from farmware_tools import device, get_config_value
 
 def moveAbs(x, y, z):
     device.log('Moving to ' + str(x) + ', ' + str(y) + ', ' + str(z), 'success', ['toast'])
@@ -103,11 +13,44 @@ def moveAbs(x, y, z):
         {
             'kind': 'coordinate',
             'args': {'x': 0, 'y': 0, 'z': 0}
-        }
-    )
+
+safeZ = -200
+plantLocation = [[0, 0], [0, 38], [0, 76], [0, 114], [0, 152], [0, 190], [0, 229], [0, 267], [0, 305], [0, 343], [0, 381], [0, 419], [0, 457], [32, 0], [32, 38], [32, 76], [32, 114], [32, 152], [32, 190], [32, 229], [32, 267], [32, 305], [32, 343], [32, 381], [32, 419], [32, 457], [64, 0], [64, 38], [64, 76], [64, 114], [64, 152], [64, 190], [64, 229], [64, 267], [64, 305], [64, 343], [64, 381], [64, 419], [64, 457], [95, 0], [95, 38], [95, 76], [95, 114], [95, 152], [95, 190], [95, 229], [95, 267], [95, 305], [95, 343], [95, 381], [95, 419], [95, 457], [127, 0], [127, 38], [127, 76], [127, 114], [127, 152], [127, 190], [127, 229], [127, 267], [127, 305], [127, 343], [127, 381], [127, 419], [127, 457], [159, 0], [159, 38], [159, 76], [159, 114], [159, 152], [159, 190], [159, 229], [159, 267], [159, 305], [159, 343], [159, 381], [159, 419], [159, 457], [190, 0], [190, 38], [190, 76], [190, 114], [190, 152], [190, 190], [190, 229], [190, 267], [190, 305], [190, 343], [190, 381], [190, 419], [190, 457], [222, 0], [222, 38], [222, 76], [222, 114], [222, 152], [222, 190], [222, 229], [222, 267], [222, 305], [222, 343], [222, 381], [222, 419], [222, 457]]
+seedToolX = 1330
+seedToolY = 136
+seedToolZ = -325
+            
+toolExtractX = 1240
+            
+seedTrayX = 1340
+seedTrayY = 0
+
+pos_x = get_config_value('Seeding Path', 'start_x')
+pos_y = get_config_value('Seeding Path', 'start_y')
+pos_z = get_config_value('Seeding Path', 'start_z')
+
+##Starting from [0,0,0]
+
+moveAbs(seedToolX, seedToolY, safeZ)
+moveAbs(seedToolX, seedToolY, seedToolZ)
+moveAbs(toolExtractX, seedToolY, seedToolZ)
+moveAbs(toolExtractX, seedToolY, safeZ)
+            
+for i in range(len(plantLocation)):
+    moveAbs(seedTrayX, seedTrayY, safeZ)
+    moveAbs(seedTrayX, seedTrayY, safeZ-10)
+    moveAbs(seedTrayX, seedTrayY, safeZ)
+    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, safeZ)
+    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, safeZ-10)
+    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, safeZ)
+    
+moveAbs(toolExtractX, seedToolY, seedToolZ)
+moveAbs(seedToolX, seedToolY, seedToolZ)
+moveAbs(seedToolX, seedToolY, safeZ)
+
+#insert moveAbs(home)
 
 device.log('success!!', 'success', ['toast'])
 
-
 if __name__ == '__main__':
-    farmware_name = 'legacy_seeding_path'
+    farmware_name = 'move_to_safe'
