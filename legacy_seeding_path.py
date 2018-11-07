@@ -23,28 +23,29 @@ seedToolY = 136
 seedToolZ = -325
             
 toolExtractX = 1240
+toolExtractZ = -250
             
 seedTrayX = 1340
 seedTrayY = 0
+seedTrayDepth = -290
 
 pos_x = get_config_value('Seeding Path', 'start_x')
 pos_y = get_config_value('Seeding Path', 'start_y')
 pos_z = get_config_value('Seeding Path', 'start_z')
 
-##Starting from [0,0,0]
-
+#Pick up seeding tool
 moveAbs(seedToolX, seedToolY, safeZ)
 moveAbs(seedToolX, seedToolY, seedToolZ)
 moveAbs(toolExtractX, seedToolY, seedToolZ)
-moveAbs(toolExtractX, seedToolY, safeZ)
+moveAbs(toolExtractX, seedToolY, toolExtractZ)
             
 for i in range(len(plantLocation)):
-    moveAbs(seedTrayX, seedTrayY, safeZ)
-    moveAbs(seedTrayX, seedTrayY, safeZ-10)
-    moveAbs(seedTrayX, seedTrayY, safeZ)
-    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, safeZ)
-    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, safeZ-10)
-    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, safeZ)
+    moveAbs(seedTrayX, seedTrayY, toolExtractZ)
+    moveAbs(seedTrayX, seedTrayY, seedTrayDepth)
+    moveAbs(seedTrayX, seedTrayY, toolExtractZ)
+    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, toolExtractZ)
+    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, pos_z-10)
+    moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, pos_z)
     
 moveAbs(toolExtractX, seedToolY, seedToolZ)
 moveAbs(seedToolX, seedToolY, seedToolZ)
