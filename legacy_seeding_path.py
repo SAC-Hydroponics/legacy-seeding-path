@@ -45,8 +45,8 @@ for i in range(len(plantLocation)):
     current_arm_y = device.get_current_position('y')
     current_arm_z = device.get_current_position('z')
     #Move to seed tray
-    moveAbs(current_arm_x, current_arm_x, toolExtractZ)
-    moveAbs(seedTrayX, current_arm_x, toolExtractZ)
+    moveAbs(current_arm_x, current_arm_y, toolExtractZ)
+    moveAbs(seedTrayX, current_arm_y, toolExtractZ)
     moveAbs(seedTrayX, seedTrayY, toolExtractZ)
     moveAbs(seedTrayX, seedTrayY, seedTrayDepth)
     moveAbs(seedTrayX, seedTrayY, toolExtractZ)
