@@ -50,13 +50,17 @@ for i in range(len(plantLocation)):
     moveAbs(seedTrayX, seedTrayY, toolExtractZ)
     moveAbs(seedTrayX, seedTrayY, seedTrayDepth)
     moveAbs(seedTrayX, seedTrayY, toolExtractZ)
-    #Turn on vac pump, it's on pin 10
+    #Turn on vac pump
     device.write_pin(10, 1, 0)
     #Move to seeding location
     moveAbs(plantLocation[i][0]+pos_x, seedTrayY, toolExtractZ)
     moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, toolExtractZ)
     moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, pos_z-10)
+    #Turn off vac pump
+    device.write_pin(10, 0, 0)
+    #Extract from seed hole
     moveAbs(plantLocation[i][0]+pos_x, plantLocation[i][1]+pos_y, pos_z)
+
     
 moveAbs(toolExtractX, seedToolY, seedToolZ)
 moveAbs(seedToolX, seedToolY, seedToolZ)
